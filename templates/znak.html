@@ -1,24 +1,98 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ znak.znak }}</title>
-</head>
-<body>
-    <h1>{{ znak.znak }}</h1>
-    <h2>Osnovne karakteristike</h2>
-    <ul>
-        <li><strong>Element:</strong> {{ znak['osnovne-karakteristike']['Element'] }}</li>
-        <li><strong>Kvalitet:</strong> {{ znak['osnovne-karakteristike']['Kvalitet'] }}</li>
-        <li><strong>Vladajuća planeta:</strong> {{ znak['osnovne-karakteristike']['Vladajuća planeta'] }}</li>
-        <li><strong>Vrline:</strong> {{ znak['osnovne-karakteristike']['Vrline'] | join(', ') }}</li>
-        <li><strong>Mane:</strong> {{ znak['osnovne-karakteristike']['Mane'] | join(', ') }}</li>
-        <li><strong>Voli:</strong> {{ znak['osnovne-karakteristike']['Voli'] | join(', ') }}</li>
-        <li><strong>Ne voli:</strong> {{ znak['osnovne-karakteristike']['Ne voli'] | join(', ') }}</li>
-        <li><strong>Poznati {{ znak.znak }}:</strong> {{ znak['osnovne-karakteristike']['Poznati'] | join(', ') }}</li>
+{% extends 'base.html' %}
 
-    </ul>
+{% block title %}
+     {{ znak.znak }}
+{% endblock %}
+
+
+{% block content %}
+
+
+    <div class="card text-bg-light mb-3" style="max-width: 550px;margin: 20px auto;">
+
+      <div class="card-header"><h3>{{ znak.znak }}</h3></div>
+
+      <div class="card-body">
+
+        <h6 class="card-title">Osnovne karakteristike</h6>
+        <ul class="list-group" style="margin-bottom: 20px;">
+            <li class="list-group-item"><strong>Element:</strong> {{ znak['osnovne-karakteristike']['Element'] }}</li>
+            <li class="list-group-item"><strong>Kvalitet:</strong> {{ znak['osnovne-karakteristike']['Kvalitet'] }}</li>
+            <li class="list-group-item"><strong>Vladajuća planeta:</strong> {{ znak['osnovne-karakteristike']['Vladajuća planeta'] }}</li>
+            <li class="list-group-item"><strong>Vrline:</strong> {{ znak['osnovne-karakteristike']['Vrline'] | join(', ') }}</li>
+            <li class="list-group-item"><strong>Mane:</strong> {{ znak['osnovne-karakteristike']['Mane'] | join(', ') }}</li>
+            <li class="list-group-item"><strong>Voli:</strong> {{ znak['osnovne-karakteristike']['Voli'] | join(', ') }}</li>
+            <li class="list-group-item"><strong>Ne voli:</strong> {{ znak['osnovne-karakteristike']['Ne voli'] | join(', ') }}</li>
+            <li class="list-group-item"><strong>Poznati {{ znak.znak }}:</strong> {{ znak['osnovne-karakteristike']['Poznati'] | join(', ') }}</li>
+        </ul>
+
+        <h6 class="card-title">Karakteristike i lične osobine</h6>
+        <p class="card-text">{{ znak['karakteristike']['opis'] }}</p>
+
+        <h6 class="card-title">{{ znak.znak }} u ljubavi</h6>
+        <p class="card-text">{{ znak['karakteristike']['ljubav'] }}</p>
+
+          <h6 class="card-title">{{ znak.znak }} i karijera</h6>
+        <p class="card-text">{{ znak['karakteristike']['karijera'] }}</p>
+
+          <h6 class="card-title">{{ znak.znak }} i prijatelji i porodica</h6>
+        <p class="card-text">{{ znak['karakteristike']['prijatelji_i_porodica'] }}</p>
+
+           <h6 class="card-title">{{ znak.znak }} i zdravlje</h6>
+        <p class="card-text">{{ znak['karakteristike']['zdravlje'] }}</p>
+
+           <h6 class="card-title">{{ znak.znak }} i slaganje sa drugim znakovima</h6>
+        <p class="card-text">{{ znak['karakteristike']['slaganje'] }}</p>
+
+      </div>
+
+    </div>
+
+
+
+{#        <h2>{{ znak.znak }}</h2>#}
+
+{#    <h5>Osnovne karakteristike</h5>#}
+{#    <ul>#}
+{#        <li><strong>Element:</strong> {{ znak['osnovne-karakteristike']['Element'] }}</li>#}
+{#        <li><strong>Kvalitet:</strong> {{ znak['osnovne-karakteristike']['Kvalitet'] }}</li>#}
+{#        <li><strong>Vladajuća planeta:</strong> {{ znak['osnovne-karakteristike']['Vladajuća planeta'] }}</li>#}
+{#        <li><strong>Vrline:</strong> {{ znak['osnovne-karakteristike']['Vrline'] | join(', ') }}</li>#}
+{#        <li><strong>Mane:</strong> {{ znak['osnovne-karakteristike']['Mane'] | join(', ') }}</li>#}
+{#        <li><strong>Voli:</strong> {{ znak['osnovne-karakteristike']['Voli'] | join(', ') }}</li>#}
+{#        <li><strong>Ne voli:</strong> {{ znak['osnovne-karakteristike']['Ne voli'] | join(', ') }}</li>#}
+{#        <li><strong>Poznati {{ znak.znak }}:</strong> {{ znak['osnovne-karakteristike']['Poznati'] | join(', ') }}</li>#}
+{#    </ul>#}
+{##}
+{#    <h5>Karakteristike i lične osobine</h5>#}
+{#    <p>{{ znak['karakteristike']['opis'] }}</p>#}
+{##}
+{#    <h5>{{ znak.znak }} u ljubavi</h5>#}
+{#    <p>{{ znak['karakteristike']['ljubav'] }}</p>#}
+{##}
+{#    <h5>{{ znak.znak }} i karijera</h5>#}
+{#    <p>{{ znak['karakteristike']['karijera'] }}</p>#}
+{##}
+{#    <h5>{{ znak.znak }} i prijatelji i porodica</h5>#}
+{#    <p>{{ znak['karakteristike']['prijatelji_i_porodica'] }}</p>#}
+{##}
+{#    <h5>{{ znak.znak }} i zdravlje</h5>#}
+{#    <p>{{ znak['karakteristike']['zdravlje'] }}</p>#}
+{##}
+{#    <h5>{{ znak.znak }} i slaganje sa drugim znakovima</h5>#}
+{#    <p>{{ znak['karakteristike']['slaganje'] }}</p>#}
+
+
+
+{% endblock %}
+
+
+
+
+
+
+
+
 
     <h2>Karakteristike i lične osobine</h2>
     <p>{{ znak['karakteristike']['opis'] }}</p>
@@ -37,6 +111,5 @@
 
     <h2>{{ znak.znak }}i slaganje sa drugim znakovima</h2>
     <p>{{ znak['karakteristike']['slaganje'] }}</p>
-</body>
-</html>
+
 
