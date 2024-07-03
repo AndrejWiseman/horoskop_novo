@@ -113,7 +113,7 @@ body {
 }
 
 /* Stilizacija kartica */
-.horoskop-card .dugme {
+.kontejner .dugme {
     width: 100%;
     background-color: #f19159;
     border: 1px solid #f19159;
