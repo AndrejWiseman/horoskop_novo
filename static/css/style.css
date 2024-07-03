@@ -1,0 +1,146 @@
+
+body {
+    background-color:  deeppink;
+}
+
+.naslov {
+    text-align: center;
+    color: #f19159;
+}
+
+
+.spinner {
+    display: none; /* Initially hide spinner */
+    width: 50px;
+    height: 50px;
+    border: 5px solid rgba(0, 0, 0, 0.3);
+    border-radius: 50%;
+    border-top-color: #3498db;
+    animation: spin 1s infinite linear;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -25px;
+    margin-top: -25px;
+}
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/*================================*/
+/*================================*/
+
+.navbar-brand h4 {
+    color: #f19159;
+}
+
+.nav_left {
+          background-color: #f19159;
+          border-top-left-radius: 48px;
+          border-bottom-left-radius: 48px;
+      }
+
+      .nav-tabs .nav-link.active {
+          background-color: transparent;
+          border-color: transparent;
+          border-top: 4px solid #fff;
+          color: #fff;
+      }
+
+      .nav-tabs .nav-link {
+          border: none;
+          border-top-left-radius: 0;
+          border-top-right-radius: 0;
+          margin: 0 30px 0 40px;
+      }
+
+      .nav-tabs {
+          border-bottom: none;
+      }
+
+      .nav-link {
+          padding: 1rem 0.5rem;
+          color: #fff;
+      }
+
+      .nav-link:focus,
+      .nav-link:hover {
+          color: #fff;
+      }
+
+      .search_input {
+          width:100%;
+          border-radius: 10px;
+          border: none;
+          line-height: initial;
+          padding-top: 4px;
+          padding-bottom: 4px;
+          color: #f19159;
+      }
+
+      .search_input:focus-visible {
+          outline: none;
+      }
+
+      input.search_input::placeholder {
+          color: #cfd2ec;
+          vertical-align: middle;
+      }
+
+      .search_img {
+          top: 7px;
+          right: 8px;
+      }
+
+      .navbar-toggler {
+          border: 3px solid #f19159;
+      }
+
+      .navbar-toggler-icon {
+          background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(35, 76, 203, 0.8)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+      }
+
+      .navbar-toggler:focus {
+          box-shadow: none;
+      }
+
+
+/*=================*/
+/*=================*/
+/*=================*/
+
+.kontejner {
+    max-width: 500px;
+    margin: 20px auto;
+}
+
+.dugme {
+    width: 100%;
+    background-color: #f19159;
+    border: 1px solid #f19159;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
