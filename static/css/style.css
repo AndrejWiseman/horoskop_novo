@@ -142,13 +142,17 @@ body {
     border: 1px solid #f19159;
 }
 
-.kard-naslov {
+.kard-naslov h3 {
     text-align: center;
 }
-
+.card-body {
+    margin: 2px;
+    /*background-color: #f19159;*/
+}
 
 .nav-tabs .nav-link{
     margin: 0;
+    padding: 0;
 }
 
 
