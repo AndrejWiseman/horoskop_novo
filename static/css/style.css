@@ -1,40 +1,185 @@
-
 body {
-    background-color:  deeppink;
-
+    background-color: deeppink;
+    margin: 0; /* Dodano da bi se uklonili zadani margini */
+    font-family: Arial, sans-serif; /* Dodano za bolju čitljivost */
 }
 
+/* Naslov sekcije */
 .naslov {
     text-align: center;
     color: #f19159;
+    margin-top: 20px; /* Dodano za bolji razmak iznad naslova */
+    margin-bottom: 20px; /* Dodano za bolji razmak ispod naslova */
 }
 
-
+/* Overlay za spinner */
 .spinner-overlay {
-    display: none; /* Initially hide spinner */
-
+    display: none;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-
     background-color: rgba(255, 20, 147, 0.8);
-    z-index: 9999; /* Ensure overlay is above other content */
+    z-index: 9999;
 }
 
+/* Spinner */
 .spinner {
-
     position: absolute;
-    top: 40%;
+    top: 50%;
     left: 50%;
-
-    z-index: 10000; /* Ensure spinner is above overlay */
+    transform: translate(-50%, -50%);
+    z-index: 10000;
 }
+
 .sp-cust {
     color: #f19159;
-
 }
+
+/*!* Stilizacija navigacije *!*/
+/*.navbar-brand h4 {*/
+/*    color: #f19159;*/
+/*    margin-bottom: 0; !* Dodano za bolji raspored *!*/
+/*}*/
+
+/*.navbar {*/
+/*    background-color: #f19159;*/
+/*}*/
+
+/*.nav-link {*/
+/*    color: #fff;*/
+/*    padding: 1rem 0.5rem;*/
+/*}*/
+
+/*.nav-link:focus,*/
+/*.nav-link:hover {*/
+/*    color: #fff;*/
+/*}*/
+
+/*.nav-tabs .nav-link.active {*/
+/*    background-color: transparent;*/
+/*    border-color: transparent;*/
+/*    border-top: 4px solid #fff;*/
+/*}*/
+
+/*.nav-tabs .nav-link {*/
+/*    border: none;*/
+/*    margin: 0 20px; !* Prilagođeno za bolji izgled *!*/
+/*}*/
+
+/*.nav-tabs {*/
+/*    border-bottom: none;*/
+/*}*/
+
+/*!* Stilizacija input polja za pretragu *!*/
+/*.search_input {*/
+/*    width: 100%;*/
+/*    border-radius: 10px;*/
+/*    border: none;*/
+/*    padding: 8px;*/
+/*    color: rgb(241, 145, 89);*/
+/*}*/
+
+/*.search_input::placeholder {*/
+/*    color: #cfd2ec;*/
+/*}*/
+
+/*.search_img {*/
+/*    position: absolute;*/
+/*    top: 50%;*/
+/*    transform: translateY(-50%);*/
+/*    right: 12px;*/
+/*}*/
+
+/*!* Stilizacija toggle gumba *!*/
+/*.navbar-toggler {*/
+/*    border: none;*/
+/*}*/
+
+/*.navbar-toggler-icon {*/
+/*    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(241, 145, 89, 0.98)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");*/
+/*}*/
+
+/*.navbar-toggler:focus {*/
+/*    outline: none;*/
+/*}*/
+
+/* Kontejner za sadržaj */
+.kontejner {
+    max-width: 500px;
+    min-height: 90vh;
+    margin: 20px auto;
+}
+
+/* Stilizacija kartica */
+.horoskop-card .dugme {
+    width: 100%;
+    background-color: #f19159;
+    border: 1px solid #f19159;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.horoskop-card .kard-naslov h3 {
+    text-align: center;
+    margin-top: 0; /* Dodano za bolji raspored naslova */
+}
+
+.horoskop-card .card-body {
+    margin: 0; /* Dodano da bi se uklonili unutarnji margine */
+}
+
+.horoskop-card .nav-tabs .nav-link{
+    margin: 0;
+    padding: 0;
+}
+
+
+
+
+
+
+
+
+
+
+/*body {*/
+/*    background-color:  deeppink;*/
+
+/*}*/
+
+/*.naslov {*/
+/*    text-align: center;*/
+/*    color: #f19159;*/
+/*}*/
+
+
+/*.spinner-overlay {*/
+/*    display: none; !* Initially hide spinner *!*/
+
+/*    position: fixed;*/
+/*    top: 0;*/
+/*    left: 0;*/
+/*    width: 100%;*/
+/*    height: 100%;*/
+/*    background-color: rgba(255, 20, 147, 0.8);*/
+/*    z-index: 9999; !* Ensure overlay is above other content *!*/
+/*}*/
+
+/*.spinner {*/
+/*    position: absolute;*/
+/*    top: 40%;*/
+/*    left: 50%;*/
+
+/*    z-index: 10000; !* Ensure spinner is above overlay *!*/
+/*}*/
+/*.sp-cust {*/
+/*    color: #f19159;*/
+
+/*}*/
 
 
 /*================================*/
@@ -116,34 +261,34 @@ body {
       }
 
 
-/*=================*/
-/*=================*/
-/*=================*/
+/*!*=================*!*/
+/*!*=================*!*/
+/*!*=================*!*/
 
-.kontejner {
-    max-width: 500px;
-    min-height: 90vh;
-    margin: 20px auto;
-}
+/*.kontejner {*/
+/*    max-width: 500px;*/
+/*    min-height: 90vh;*/
+/*    margin: 20px auto;*/
+/*}*/
 
-.dugme {
-    width: 100%;
-    background-color: #f19159;
-    border: 1px solid #f19159;
-}
+/*.dugme {*/
+/*    width: 100%;*/
+/*    background-color: #f19159;*/
+/*    border: 1px solid #f19159;*/
+/*}*/
 
-.kard-naslov h3 {
-    text-align: center;
-}
-.card-body {
-    margin: 2px;
-    /*background-color: #f19159;*/
-}
+/*.kard-naslov h3 {*/
+/*    text-align: center;*/
+/*}*/
+/*.card-body {*/
+/*    margin: 2px;*/
+/*    !*background-color: #f19159;*!*/
+/*}*/
 
-.nav-tabs .nav-link{
-    margin: 0;
-    padding: 0;
-}
+/*.nav-tabs .nav-link{*/
+/*    margin: 0;*/
+/*    padding: 0;*/
+/*}*/
 
 
 
