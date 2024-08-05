@@ -8,25 +8,44 @@ app = Flask(__name__)
 def fetch_horoscope(url):
     source = requests.get(url).text
     soup = BeautifulSoup(source, 'lxml')
-    return soup.find('div', class_='article-details').text
+    # return soup.find('div', class_='entry-content').text
+
+    entry_content_div = soup.find('div', class_='entry-content')
+    paragraphs = entry_content_div.find_all('p', recursive=False)
+    # return ' '.join([p.text for p in paragraphs])
+
+    formatted_paragraphs = []
+    for p in paragraphs:
+        formatted_text = ''
+        for content in p.contents:
+            if content.name == 'strong':
+                formatted_text += f'<strong style="font-weight: bold;">{content.text}</strong><br>'
+            else:
+                formatted_text += str(content)
+        formatted_paragraphs.append(f'<p>{formatted_text}</p>')
+
+    return ' '.join(formatted_paragraphs)
+
+
 
 def get_horoscope_data(znak, urls):
     with concurrent.futures.ThreadPoolExecutor() as executor:
         results = list(executor.map(fetch_horoscope, urls))
 
-    dnevni, nedeljni, mesecni, godisnji = results
+    dnevni, sutra, nedeljni, mesecni, godisnji = results
 
-    return render_template('horoskop-detaljno.html', znak=znak, dnevni=dnevni, nedeljni=nedeljni, mesecni=mesecni, godisnji=godisnji)
+    return render_template('horoskop-detaljno.html', znak=znak, dnevni=dnevni, sutra=sutra, nedeljni=nedeljni, mesecni=mesecni, godisnji=godisnji)
 
 
 @app.route('/ovan')
 def ovan():
     znak = 'Ovan'
     urls = [
-        'http://www.horoskopius.com/dnevni-horoskop/ovan/',
-        'http://www.horoskopius.com/nedeljni-horoskop/ovan/',
-        'http://www.horoskopius.com/mesecni-horoskop/ovan/',
-        'http://www.horoskopius.com/godisnji-horoskop/ovan/'
+        'https://www.astroputnik.com/dnevni-horoskop-ovan/',
+        'https://www.astroputnik.com/horoskop-za-sutra-ovan/',
+        'https://www.astroputnik.com/nedeljni-horoskop-ovan/',
+        'https://www.astroputnik.com/mesecni-horoskop-ovan/',
+        'https://www.astroputnik.com/godisnji-horoskop-ovan/'
     ]
     return get_horoscope_data(znak, urls)
 
@@ -35,10 +54,11 @@ def ovan():
 def bik():
     znak = 'Bik'
     urls = [
-        'http://www.horoskopius.com/dnevni-horoskop/bik/',
-        'http://www.horoskopius.com/nedeljni-horoskop/bik/',
-        'http://www.horoskopius.com/mesecni-horoskop/bik/',
-        'http://www.horoskopius.com/godisnji-horoskop/bik/'
+        'https://www.astroputnik.com/dnevni-horoskop-bik/',
+        'https://www.astroputnik.com/horoskop-za-sutra-bik/',
+        'https://www.astroputnik.com/nedeljni-horoskop-bik/',
+        'https://www.astroputnik.com/mesecni-horoskop-bik/',
+        'https://www.astroputnik.com/godisnji-horoskop-bik/'
     ]
     return get_horoscope_data(znak, urls)
 
@@ -48,10 +68,11 @@ def bik():
 def blizanci():
     znak = 'Blizanci'
     urls = [
-        'http://www.horoskopius.com/dnevni-horoskop/blizanci/',
-        'http://www.horoskopius.com/nedeljni-horoskop/blizanci/',
-        'http://www.horoskopius.com/mesecni-horoskop/blizanci/',
-        'http://www.horoskopius.com/godisnji-horoskop/blizanci/'
+        'https://www.astroputnik.com/dnevni-horoskop-blizanci/',
+        'https://www.astroputnik.com/horoskop-za-sutra-blizanci/',
+        'https://www.astroputnik.com/nedeljni-horoskop-blizanci/',
+        'https://www.astroputnik.com/mesecni-horoskop-blizanci/',
+        'https://www.astroputnik.com/godisnji-horoskop-blizanci/'
     ]
     return get_horoscope_data(znak, urls)
 
@@ -61,10 +82,11 @@ def blizanci():
 def rak():
     znak = 'Rak'
     urls = [
-        'http://www.horoskopius.com/dnevni-horoskop/rak/',
-        'http://www.horoskopius.com/nedeljni-horoskop/rak/',
-        'http://www.horoskopius.com/mesecni-horoskop/rak/',
-        'http://www.horoskopius.com/godisnji-horoskop/rak/'
+        'https://www.astroputnik.com/dnevni-horoskop-rak/',
+        'https://www.astroputnik.com/horoskop-za-sutra-rak/',
+        'https://www.astroputnik.com/nedeljni-horoskop-rak/',
+        'https://www.astroputnik.com/mesecni-horoskop-rak/',
+        'https://www.astroputnik.com/godisnji-horoskop-rak/'
     ]
     return get_horoscope_data(znak, urls)
 
@@ -74,10 +96,11 @@ def rak():
 def lav():
     znak = 'Lav'
     urls = [
-        'http://www.horoskopius.com/dnevni-horoskop/lav/',
-        'http://www.horoskopius.com/nedeljni-horoskop/lav/',
-        'http://www.horoskopius.com/mesecni-horoskop/lav/',
-        'http://www.horoskopius.com/godisnji-horoskop/lav/'
+        'https://www.astroputnik.com/dnevni-horoskop-lav/',
+        'https://www.astroputnik.com/horoskop-za-sutra-lav/',
+        'https://www.astroputnik.com/nedeljni-horoskop-lav/',
+        'https://www.astroputnik.com/mesecni-horoskop-lav/',
+        'https://www.astroputnik.com/godisnji-horoskop-lav/'
     ]
     return get_horoscope_data(znak, urls)
 
@@ -87,10 +110,11 @@ def lav():
 def devica():
     znak = 'Devica'
     urls = [
-        'http://www.horoskopius.com/dnevni-horoskop/devica/',
-        'http://www.horoskopius.com/nedeljni-horoskop/devica/',
-        'http://www.horoskopius.com/mesecni-horoskop/devica/',
-        'http://www.horoskopius.com/godisnji-horoskop/devica/'
+        'https://www.astroputnik.com/dnevni-horoskop-devica/',
+        'https://www.astroputnik.com/horoskop-za-sutra-devica/',
+        'https://www.astroputnik.com/nedeljni-horoskop-devica/',
+        'https://www.astroputnik.com/mesecni-horoskop-devica/',
+        'https://www.astroputnik.com/godisnji-horoskop-devica/'
     ]
     return get_horoscope_data(znak, urls)
 
@@ -101,10 +125,11 @@ def devica():
 def vaga():
     znak = 'Vaga'
     urls = [
-        'http://www.horoskopius.com/dnevni-horoskop/vaga/',
-        'http://www.horoskopius.com/nedeljni-horoskop/vaga/',
-        'http://www.horoskopius.com/mesecni-horoskop/vaga/',
-        'http://www.horoskopius.com/godisnji-horoskop/vaga/'
+        'https://www.astroputnik.com/dnevni-horoskop-vaga/',
+        'https://www.astroputnik.com/horoskop-za-sutra-vaga/',
+        'https://www.astroputnik.com/nedeljni-horoskop-vaga/',
+        'https://www.astroputnik.com/mesecni-horoskop-vaga/',
+        'https://www.astroputnik.com/godisnji-horoskop-vaga/'
     ]
     return get_horoscope_data(znak, urls)
 
@@ -115,10 +140,11 @@ def vaga():
 def skorpija():
     znak = 'Skorpija'
     urls = [
-        'http://www.horoskopius.com/dnevni-horoskop/skorpija/',
-        'http://www.horoskopius.com/nedeljni-horoskop/skorpija/',
-        'http://www.horoskopius.com/mesecni-horoskop/skorpija/',
-        'http://www.horoskopius.com/godisnji-horoskop/skorpija/'
+        'https://www.astroputnik.com/dnevni-horoskop-skorpija/',
+        'https://www.astroputnik.com/horoskop-za-sutra-skorpija/',
+        'https://www.astroputnik.com/nedeljni-horoskop-skorpija/',
+        'https://www.astroputnik.com/mesecni-horoskop-skorpija/',
+        'https://www.astroputnik.com/godisnji-horoskop-skorpija/'
     ]
     return get_horoscope_data(znak, urls)
 
@@ -127,10 +153,11 @@ def skorpija():
 def strelac():
     znak = 'Strelac'
     urls = [
-        'http://www.horoskopius.com/dnevni-horoskop/strelac/',
-        'http://www.horoskopius.com/nedeljni-horoskop/strelac/',
-        'http://www.horoskopius.com/mesecni-horoskop/strelac/',
-        'http://www.horoskopius.com/godisnji-horoskop/strelac/'
+        'https://www.astroputnik.com/dnevni-horoskop-strelac/',
+        'https://www.astroputnik.com/horoskop-za-sutra-strelac/',
+        'https://www.astroputnik.com/nedeljni-horoskop-strelac/',
+        'https://www.astroputnik.com/mesecni-horoskop-strelac/',
+        'https://www.astroputnik.com/godisnji-horoskop-strelac/'
     ]
     return get_horoscope_data(znak, urls)
 
@@ -140,10 +167,11 @@ def strelac():
 def jarac():
     znak = 'Jarac'
     urls = [
-        'http://www.horoskopius.com/dnevni-horoskop/jarac/',
-        'http://www.horoskopius.com/nedeljni-horoskop/jarac/',
-        'http://www.horoskopius.com/mesecni-horoskop/jarac/',
-        'http://www.horoskopius.com/godisnji-horoskop/jarac/'
+        'https://www.astroputnik.com/dnevni-horoskop-jarac/',
+        'https://www.astroputnik.com/horoskop-za-sutra-jarac/',
+        'https://www.astroputnik.com/nedeljni-horoskop-jarac/',
+        'https://www.astroputnik.com/mesecni-horoskop-jarac/',
+        'https://www.astroputnik.com/godisnji-horoskop-jarac/'
     ]
     return get_horoscope_data(znak, urls)
 
@@ -152,10 +180,11 @@ def jarac():
 def vodolija():
     znak = 'Vodolija'
     urls = [
-        'http://www.horoskopius.com/dnevni-horoskop/vodolija/',
-        'http://www.horoskopius.com/nedeljni-horoskop/vodolija/',
-        'http://www.horoskopius.com/mesecni-horoskop/vodolija/',
-        'http://www.horoskopius.com/godisnji-horoskop/vodolija/'
+        'https://www.astroputnik.com/dnevni-horoskop-vodolija/',
+        'https://www.astroputnik.com/horoskop-za-sutra-vodolija/',
+        'https://www.astroputnik.com/nedeljni-horoskop-vodolija/',
+        'https://www.astroputnik.com/mesecni-horoskop-vodolija/',
+        'https://www.astroputnik.com/godisnji-horoskop-vodolija/'
     ]
     return get_horoscope_data(znak, urls)
 
@@ -164,10 +193,11 @@ def vodolija():
 def ribe():
     znak = 'Ribe'
     urls = [
-        'http://www.horoskopius.com/dnevni-horoskop/ribe/',
-        'http://www.horoskopius.com/nedeljni-horoskop/ribe/',
-        'http://www.horoskopius.com/mesecni-horoskop/ribe/',
-        'http://www.horoskopius.com/godisnji-horoskop/ribe/'
+        'https://www.astroputnik.com/dnevni-horoskop-ribe/',
+        'https://www.astroputnik.com/horoskop-za-sutra-ribe/',
+        'https://www.astroputnik.com/nedeljni-horoskop-ribe/',
+        'https://www.astroputnik.com/mesecni-horoskop-ribe/',
+        'https://www.astroputnik.com/godisnji-horoskop-ribe/'
     ]
     return get_horoscope_data(znak, urls)
 
